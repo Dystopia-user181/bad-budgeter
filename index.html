@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Budgeter</title>
+        <style>
+            #category-display {
+                display: grid;
+                grid-template-columns: 200px auto auto;
+                row-gap: 2px;
+            }
+            #events-list {
+                display: grid;
+                grid-template-columns: 100px 100px 200px;
+                row-gap: 2px;
+                align-items: center;
+            }
+            #add-events {
+                margin-top: 3px;
+                margin-left: 5px;
+                border-left: 2px solid black;
+                padding-left: 5px;
+            }
+            .note {
+                color: #333;
+                font-size: 9px;
+            }
+        </style>
+    </head>
+    <body>
+        <button onclick="exportData()">Export Data</button>
+        <br>
+        Import Data <input type="file" onchange="importData(event.target.files)">
+        <br>
+        <div id="category-display"></div>
+        <button onclick="createCategory()">Create new category</button>
+        <br>
+        <br>
+        <button onclick="showHideAddEvents()">Add event</button>
+        <div id="add-events" style="display: none;">
+            Amount: <input id="event-amount" type="number">
+            <br>
+            Category: <select id="event-category"></select>
+            <br>
+            Note: <input id="event-note">
+            <br>
+            <button onclick="addEvent()">Add</button>
+        </div>
+        <br>
+        <div id="view-events">
+            View year: <select id="view-year" onchange="updateViewSelectInterface()"></select>
+            <br>
+            View month: <select id="view-month" onchange="updateViewSelectInterface()"></select>
+            <br>
+            View day: <select id="view-day" onchange="updateEventsListInterface()"></select>
+            <br>
+            <br>
+            <div id="events-list"></div>
+            <button onclick="removeLastEvent()">Remove last entry</button>
+        </div>
+    </body>
+    <script src="script.js"></script>
+</html>
